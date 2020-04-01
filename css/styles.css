@@ -1,0 +1,146 @@
+/*
+- Need to fix both background gradient issue on safari and any possible text issues between browsers
+
+- Need to get rid of margin-bottom on quote-box as well as get the RPS Designs watermark working. Might be able to make the main container a flexbox and do justify the three elements with space-around. But I need to be able to control all spaces for the different queries.
+
+- Need to fix title-box for in between large and small sizes.
+*/
+
+* {
+  box-sizing: border-box;
+  /* border: 2px solid red; */
+}
+
+body {
+  margin: 0;
+  font-family: 'Source Code Pro', monospace;
+  line-height: 1.3;
+  color: #e0e0e0;
+}
+
+/* TYPOGRAPHY
+____________________________________________*/
+
+.index-title-box > h1,
+.index-subtitle-box > h2 {
+  color: white;
+  margin: 0;
+  line-height: 1;
+}
+
+.index-title-box > h1 {
+  font-size: 3rem;
+  font-family: 'Dancing Script', cursive;
+  letter-spacing: 4px;
+}
+
+.index-subtitle-box > h2 {
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-family: monospace;
+  letter-spacing: 9.25px;
+  color: #c2c2c2;
+  margin: 0;
+}
+
+.index-quote-box {
+  color: white;
+  font-size: 1.125rem;
+}
+
+.fade-text {
+  opacity: 0.5;
+}
+
+/* this is turned off only because it's breaking my height at smaller widths which is due to quote-box margin-bottom */
+footer > p {
+  margin: 0 0 0.5em;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.75rem;
+  display: none;
+}
+
+/* LAYOUT
+____________________________________________*/
+
+.index-body {
+  /* kind of breaks at super narrow widths */
+  background-image: url(../images/portugal-pink-tall-faded.jpeg), linear-gradient(45deg,red, blue);
+  background-blend-mode: screen;
+  background-size: cover;
+  background-position: bottom right;
+  background: color: #707070;
+  min-width: 350px;
+  max-height: 100vh;
+}
+
+.index-container {
+  width: 90%;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.index-title-box {
+  background: black;
+  max-width: 465px;
+  margin: 2em auto;
+  padding: 1.5em;
+  text-align: center;
+}
+
+.index-subtitle-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.index-quote-box {
+  margin: 0 auto 10em; /* this margin-bottom needs to go */
+  padding: 1em;
+  background: rgba(0, 0, 0, 0.33);
+  width: 60%;
+}
+
+.index-quote-box p {
+  opacity: 1;
+}
+
+/* MEDIA QUERIES
+____________________________________________*/
+
+@media (max-width: 450px) {
+  .index-title-box > h1 {
+    font-size: 1.6rem;
+  }
+
+  .index-subtitle-box > h2 {
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    margin-top: 0.5em;
+  }
+
+  .index-quote-box {
+    width: 75%;
+  }
+}
+
+@media (min-width: 900px) {
+  .index-title-box,
+  .index-quote-box {
+    margin: 2em 0 0;
+  }
+
+  .index-quote-box {
+    width: 40%;
+    text-align: left;
+    margin-bottom: 3em;
+  }
+
+  /* see note above */
+  footer > p {
+    display: block;
+  }
+}
